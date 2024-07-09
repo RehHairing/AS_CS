@@ -1,0 +1,94 @@
+
+
+
+<label>Name:</label><input type="text" name="attr_character_name" />
+
+<div class="3colrow">
+    <div class="col">
+    <h2>Cursed Energy</h2>
+        <p>d4 <input type="number" name="attr_d_4_CE" value=0 min="0" max="5">
+        d6 <input type="number" name="attr_d_6_CE" value=1 min="0" max="5">
+        d10 <input type="number" name="attr_d_10_CE" value=0 min="0" max="5">
+        d12 <input type="number" name="attr_d_12_CE" value=0 min="0" max="5">
+        d20 <input type="number" name="attr_d_20_CE" value=0 min="0" max="5"></p>
+        <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_CE}d4 + @{d_6_CE}d6 + @{d_10_CE}d10 + @{d_12_CE}d12 + @{d_20_CE}d20]]}}'></button>
+</div>
+</div>
+
+<div class="dice_pool_CON">
+    <h2>Control</h2>
+    <p>d4 <input type="number" name="attr_d_4_CON" value=0 min="0" max="5">
+    d6 <input type="number" name="attr_d_6_CON" value=1 min="0" max="5">
+    d10 <input type="number" name="attr_d_10_CON" value=0 min="0" max="5">
+    d12 <input type="number" name="attr_d_12_CON" value=0 min="0" max="5">
+    d20 <input type="number" name="attr_d_20_CON" value=0 min="0" max="5"></p>
+    <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_CON}d4 + @{d_6_CON}d6 + @{d_10_CON}d10 + @{d_12_CON}d12 + @{d_20_CON}d20]]}}'></button>
+</div>
+
+<div class="dice_pool_BD">
+    <h2>Body</h2>
+    <p>d4 <input type="number" name="attr_d_4_BD" value=0 min="0" max="5">
+    d6 <input type="number" name="attr_d_6_BD" value=1 min="0" max="5">
+    d10 <input type="number" name="attr_d_10_BD" value=0 min="0" max="5">
+    d12 <input type="number" name="attr_d_12_BD" value=0 min="0" max="5">
+    d20 <input type="number" name="attr_d_20_BD" value=0 min="0" max="5"></p>
+    <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_BD}d4 + @{d_6_BD}d6 + @{d_10_BD}d10 + @{d_12_BD}d12 + @{d_20_BD}d20]]}}'></button>
+</div>
+
+<div class="dice_pool_RF">
+    <h2>Reflex</h2>
+    <p>d4 <input type="number" name="attr_d_4_RF" value=0 min="0" max="5">
+    d6 <input type="number" name="attr_d_6_RF" value=1 min="0" max="5">
+    d10 <input type="number" name="attr_d_10_RF" value=0 min="0" max="5">
+    d12 <input type="number" name="attr_d_12_RF" value=0 min="0" max="5">
+    d20 <input type="number" name="attr_d_20_RF" value=0 min="0" max="5"></p>
+    <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_RF}d4 + @{d_6_RF}d6 + @{d_10_RF}d10 + @{d_12_RF}d12 + @{d_20_RF}d20]]}}'></button>
+</div>
+
+<div class="dice_pool_INT">
+    <h2>Intelligence</h2>
+    <p>d4 <input type="number" name="attr_d_4_INT" value=0 min="0" max="5">
+    d6 <input type="number" name="attr_d_6_INT" value=1 min="0" max="5">
+    d10 <input type="number" name="attr_d_10_INT" value=0 min="0" max="5">
+    d12 <input type="number" name="attr_d_12_INT" value=0 min="0" max="5">
+    d20 <input type="number" name="attr_d_20_INT" value=0 min="0" max="5"></p>
+    <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_INT}d4 + @{d_6_INT}d6 + @{d_10_INT}d10 + @{d_12_INT}d12 + @{d_20_INT}d20]]}}'></button>
+</div>
+
+<div class="dice_pool_SC">
+    <h2>Social</h2>
+    <p>d4 <input type="number" name="attr_d_4_SC" value=0 min="0" max="5">
+    d6 <input type="number" name="attr_d_6_SC" value=1 min="0" max="5">
+    d10 <input type="number" name="attr_d_10_SC" value=0 min="0" max="5">
+    d12 <input type="number" name="attr_d_12_SC" value=0 min="0" max="5">
+    d20 <input type="number" name="attr_d_20_SC" value=0 min="0" max="5"></p>
+    <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_SC}d4 + @{d_6_SC}d6 + @{d_10_SC}d10 + @{d_12_SC}d12 + @{d_20_SC}d20]]}}'></button>
+</div>
+
+
+<div class="sheet-wheel">
+    <input type="checkbox" class="sheet-wheel-segment" name="attr_wheel_1" value="1">
+    <input type="checkbox" class="sheet-wheel-segment" name="attr_wheel_2" value="2">
+    <input type="checkbox" class="sheet-wheel-segment" name="attr_wheel_3" value="3">
+    <input type="checkbox" class="sheet-wheel-segment" name="attr_wheel_4" value="4">
+    <input type="checkbox" class="sheet-wheel-segment" name="attr_wheel_5" value="5">
+</div>
+<input type="hidden" name="attr_wheel_value" value="0">
+
+
+
+<script type="text/worker">
+    on('change:attr_wheel_1 change:attr_wheel_2 change:attr_wheel_3 change:attr_wheel_4 change:attr_wheel_5', function() {
+        getAttrs(['attr_wheel_1', 'attr_wheel_2', 'attr_wheel_3', 'attr_wheel_4', 'attr_wheel_5'], function(values) {
+            var count = 0;
+            for (var i = 1; i <= 5; i++) {
+                if (values['attr_wheel_' + i] === '1') {
+                    count++;
+                }
+            }
+            setAttrs({
+                attr_wheel_value: count
+            });
+        });
+    });
+</script>
