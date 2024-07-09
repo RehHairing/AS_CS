@@ -1,25 +1,16 @@
 .charsheet {
     font-family: Arial, sans-serif;
 }
-.wheel {
+.image-progression {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
 }
-.wheel-segment {
-    width: 40px;
-    height: 40px;
-    margin: 5px;
-    appearance: none;
-    background-color: #ddd;
-    border: 1px solid #aaa;
-    border-radius: 50%;
-    cursor: pointer;
+.image-progression img {
+    width: 100px;
+    height: 100px;
+    margin: 0 10px;
 }
-.wheel-segment:checked {
-    background-color: #0f0;
+.image-progression button {
+    padding: 5px 10px;
 }
-wheel-1 { top: 10%; left: 50%; transform: translate(-50%, -50%); }
-wheel-2 { top: 30%; left: 80%; transform: translate(-50%, -50%); }
-wheel-3 { top: 70%; left: 80%; transform: translate(-50%, -50%); }
-wheel-4 { top: 90%; left: 50%; transform: translate(-50%, -50%); }
-wheel-5 { top: 70%; left: 20%; transform: translate(-50%, -50%); }

@@ -65,30 +65,62 @@
     <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_SC}d4 + @{d_6_SC}d6 + @{d_10_SC}d10 + @{d_12_SC}d12 + @{d_20_SC}d20]]}}'></button>
 </div>
 
-
-<div class="sheet-wheel">
-    <input type="checkbox" class="sheet-wheel-segment" name="attr_wheel_1" value="1">
-    <input type="checkbox" class="sheet-wheel-segment" name="attr_wheel_2" value="2">
-    <input type="checkbox" class="sheet-wheel-segment" name="attr_wheel_3" value="3">
-    <input type="checkbox" class="sheet-wheel-segment" name="attr_wheel_4" value="4">
-    <input type="checkbox" class="sheet-wheel-segment" name="attr_wheel_5" value="5">
+<div class="image-progression">
+    <button type="button" name="attr_progress_backward">Previous</button>
+    <img src="" name="attr_progress_image">
+    <button type="button" name="attr_progress_forward">Next</button>
 </div>
-<input type="hidden" name="attr_wheel_value" value="0">
-
-
 
 <script type="text/worker">
-    on('change:attr_wheel_1 change:attr_wheel_2 change:attr_wheel_3 change:attr_wheel_4 change:attr_wheel_5', function() {
-        getAttrs(['attr_wheel_1', 'attr_wheel_2', 'attr_wheel_3', 'attr_wheel_4', 'attr_wheel_5'], function(values) {
-            var count = 0;
-            for (var i = 1; i <= 5; i++) {
-                if (values['attr_wheel_' + i] === '1') {
-                    count++;
-                }
+    // Array of image URLs for progression states
+    const imageUrls = [
+        'https://example.com/image1.png',
+        'https://example.com/image2.png',
+        'https://example.com/image3.png',
+        'https://example.com/image4.png',
+        'https://example.com/image5.png'
+    ];
+
+    // Function to update the image based on the current state
+    function updateImage(state) {
+        setAttrs({
+            attr_progress_image: imageUrls[state]
+        });
+    }
+
+    // Event listener for forward button
+    on('clicked:attr_progress_forward', function() {
+        getAttrs(['attr_progress_state'], function(values) {
+            let state = parseInt(values.attr_progress_state, 10);
+            if (state < imageUrls.length - 1) {
+                state++;
+                setAttrs({
+                    attr_progress_state: state
+                });
+                updateImage(state);
             }
-            setAttrs({
-                attr_wheel_value: count
-            });
+        });
+    });
+
+    // Event listener for backward button
+    on('clicked:attr_progress_backward', function() {
+        getAttrs(['attr_progress_state'], function(values) {
+            let state = parseInt(values.attr_progress_state, 10);
+            if (state > 0) {
+                state--;
+                setAttrs({
+                    attr_progress_state: state
+                });
+                updateImage(state);
+            }
+        });
+    });
+
+    // Initialize the image on sheet open
+    on('sheet:opened', function() {
+        getAttrs(['attr_progress_state'], function(values) {
+            let state = parseInt(values.attr_progress_state, 10);
+            updateImage(state);
         });
     });
 </script>
