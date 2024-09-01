@@ -2,91 +2,347 @@
 
 
 <label>Name:</label><input type="text" name="attr_character_name" />
+<div class="tab-container">
+  <button type="action" name="act_character" class="tab-button">Stats</button>
+  <button type="action" name="act_journal" class="tab-button">Powers and Skills</button>
+  
+</div>
 
-<div class="3colrow">
-    <div class="col">
-    <h2>Cursed Energy</h2>
+<input type='hidden' class='sheet-tabstoggle' name='attr_sheetTab' value='character' />
+
+<div class="sheet-character">
+<div class="containerWhole" hidden="False" id="statsTab">
+    <div class="statContainer">
+    
+    <div class="dicePool">
+        <h2>Cursed Energy</h2>
+        <p>
+        Max CE:
+        <input type="text" name="attr_total_CE" value="0" class="totalCE" readonly>
+        Current CE:
+        <input type="number" max='100' name="attr_current_CE" class="totalCE"/>
+        </p>
         <p>d4 <input type="number" name="attr_d_4_CE" value=0 min="0" max="5">
         d6 <input type="number" name="attr_d_6_CE" value=1 min="0" max="5">
         d10 <input type="number" name="attr_d_10_CE" value=0 min="0" max="5">
         d12 <input type="number" name="attr_d_12_CE" value=0 min="0" max="5">
-        d20 <input type="number" name="attr_d_20_CE" value=0 min="0" max="5"></p>
+        d20 <input type="number" name="attr_d_20_CE" value=0 min="0" max="5">
         <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_CE}d4 + @{d_6_CE}d6 + @{d_10_CE}d10 + @{d_12_CE}d12 + @{d_20_CE}d20]]}}'></button>
-</div>
-</div>
+      </p>
 
-<div class="dice_pool_CON">
-    <h2>Control</h2>
-    <p>d4 <input type="number" name="attr_d_4_CON" value=0 min="0" max="5">
-        d6 <input type="number" name="attr_d_6_CON" value=1 min="0" max="5">
-        d10 <input type="number" name="attr_d_10_CON" value=0 min="0" max="5">
-        d12 <input type="number" name="attr_d_12_CON" value=0 min="0" max="5">
-        d20 <input type="number" name="attr_d_20_CON" value=0 min="0" max="5"></p>
-    <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_CON}d4 + @{d_6_CON}d6 + @{d_10_CON}d10 + @{d_12_CON}d12 + @{d_20_CON}d20]]}}'></button>
-</div>
+    </div>
+    <div class="dicePool">
+            <h2>Control</h2>
+            <p>d4 <input type="number" name="attr_d_4_CON" value=0 min="0" max="5">
+            d6 <input type="number" name="attr_d_6_CON" value=1 min="0" max="5">
+            d10 <input type="number" name="attr_d_10_CON" value=0 min="0" max="5">
+            d12 <input type="number" name="attr_d_12_CON" value=0 min="0" max="5">
+            d20 <input type="number" name="attr_d_20_CON" value=0 min="0" max="5">
+        <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_CON}d4 + @{d_6_CON}d6 + @{d_10_CON}d10 + @{d_12_CON}d12 + @{d_20_CON}d20]]}}'></button></p>
+    </div>
 
-<div class="dice_pool_BD">
-    <h2>Body</h2>
-    <p>d4 <input type="number" name="attr_d_4_BD" value=0 min="0" max="5">
-        d6 <input type="number" name="attr_d_6_BD" value=1 min="0" max="5">
-        d10 <input type="number" name="attr_d_10_BD" value=0 min="0" max="5">
-        d12 <input type="number" name="attr_d_12_BD" value=0 min="0" max="5">
-        d20 <input type="number" name="attr_d_20_BD" value=0 min="0" max="5"></p>
-    <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_BD}d4 + @{d_6_BD}d6 + @{d_10_BD}d10 + @{d_12_BD}d12 + @{d_20_BD}d20]]}}'></button>
-</div>
+    <div class="dicePool">
+            <h2>Body</h2>
+            <p>d4 <input type="number" name="attr_d_4_BD" value=0 min="0" max="5">
+            d6 <input type="number" name="attr_d_6_BD" value=1 min="0" max="5">
+            d10 <input type="number" name="attr_d_10_BD" value=0 min="0" max="5">
+            d12 <input type="number" name="attr_d_12_BD" value=0 min="0" max="5">
+            d20 <input type="number" name="attr_d_20_BD" value=0 min="0" max="5">
+            <button type="roll" name="roll_downgradedRoll" value='&{template:default} {{name=@{character_name}}} {{result=[[@{downgraded_roll_expression}]]}}'>Roll Toughness</button>
+            <input type="hidden" name="attr_downgraded_roll_expression">
+            <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_BD}d4 + @{d_6_BD}d6 + @{d_10_BD}d10 + @{d_12_BD}d12 + @{d_20_BD}d20]]}}'></button></p>
+    </div>
 
-<div class="dice_pool_RF">
-    <h2>Reflex</h2>
-    <p>d4 <input type="number" name="attr_d_4_RF" value=0 min="0" max="5">
-        d6 <input type="number" name="attr_d_6_RF" value=1 min="0" max="5">
-        d10 <input type="number" name="attr_d_10_RF" value=0 min="0" max="5">
-        d12 <input type="number" name="attr_d_12_RF" value=0 min="0" max="5">
-        d20 <input type="number" name="attr_d_20_RF" value=0 min="0" max="5"></p>
-    <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_RF}d4 + @{d_6_RF}d6 + @{d_10_RF}d10 + @{d_12_RF}d12 + @{d_20_RF}d20]]}}'></button>
-</div>
+    <div class="dicePool">
+            <h2>Reflex</h2>
+            <p>d4 <input type="number" name="attr_d_4_RF" value=0 min="0" max="5">
+            d6 <input type="number" name="attr_d_6_RF" value=1 min="0" max="5">
+            d10 <input type="number" name="attr_d_10_RF" value=0 min="0" max="5">
+            d12 <input type="number" name="attr_d_12_RF" value=0 min="0" max="5">
+            d20 <input type="number" name="attr_d_20_RF" value=0 min="0" max="5">
+        <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_RF}d4 + @{d_6_RF}d6 + @{d_10_RF}d10 + @{d_12_RF}d12 + @{d_20_RF}d20]]}}'></button></p>
+    </div>
 
-<div class="dice_pool_INT">
-    <h2>Intelligence</h2>
-    <p>d4 <input type="number" name="attr_d_4_INT" value=0 min="0" max="5">
-        d6 <input type="number" name="attr_d_6_INT" value=1 min="0" max="5">
-        d10 <input type="number" name="attr_d_10_INT" value=0 min="0" max="5">
-        d12 <input type="number" name="attr_d_12_INT" value=0 min="0" max="5">
-        d20 <input type="number" name="attr_d_20_INT" value=0 min="0" max="5"></p>
-    <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_INT}d4 + @{d_6_INT}d6 + @{d_10_INT}d10 + @{d_12_INT}d12 + @{d_20_INT}d20]]}}'></button>
-</div>
+    <div class="dicePool">
+            <h2>Intelligence</h2>
+            <p>d4 <input type="number" name="attr_d_4_INT" value=0 min="0" max="5">
+            d6 <input type="number" name="attr_d_6_INT" value=1 min="0" max="5">
+            d10 <input type="number" name="attr_d_10_INT" value=0 min="0" max="5">
+            d12 <input type="number" name="attr_d_12_INT" value=0 min="0" max="5">
+            d20 <input type="number" name="attr_d_20_INT" value=0 min="0" max="5">
+        <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_INT}d4 + @{d_6_INT}d6 + @{d_10_INT}d10 + @{d_12_INT}d12 + @{d_20_INT}d20]]}}'></button></p>
+    </div>
 
-<div class="dice_pool_SC">
-    <h2>Social</h2>
-    <p>d4 <input type="number" name="attr_d_4_SC" value=0 min="0" max="5">
-        d6 <input type="number" name="attr_d_6_SC" value=1 min="0" max="5">
-        d10 <input type="number" name="attr_d_10_SC" value=0 min="0" max="5">
-        d12 <input type="number" name="attr_d_12_SC" value=0 min="0" max="5">
-        d20 <input type="number" name="attr_d_20_SC" value=0 min="0" max="5"></p>
-    <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_SC}d4 + @{d_6_SC}d6 + @{d_10_SC}d10 + @{d_12_SC}d12 + @{d_20_SC}d20]]}}'></button>
-</div>
+    <div class="dicePool">
+            <h2>Social</h2>
+            <p>d4 <input type="number" name="attr_d_4_SC" value=0 min="0" max="5">
+            d6 <input type="number" name="attr_d_6_SC" value=1 min="0" max="5">
+            d10 <input type="number" name="attr_d_10_SC" value=0 min="0" max="5">
+            d12 <input type="number" name="attr_d_12_SC" value=0 min="0" max="5">
+            d20 <input type="number" name="attr_d_20_SC" value=0 min="0" max="5">
+        <button type='roll' name='roll_testattack' value='&{template:default} {{name=@{character_name}}} {{result=[[@{d_4_SC}d4 + @{d_6_SC}d6 + @{d_10_SC}d10 + @{d_12_SC}d12 + @{d_20_SC}d20]]}}'></button></p>
+    </div>
+    </div>
+    <div class="statusBox">
 
-<div class="2colrow">
-    <div>
-        <div class="WoundsCol">
-            <div class="image-progression">
-                <img src="" name="attr_progress_image" class="sheet-image-class">
-                <img src="" name="attr_progress_image" class="sheet-image-class">
-            </div>
-            <div class="image-progression">
-                <button type="action" name="act_progress_backward">Previous</button>
-                <button type="action" name="act_progress_forward">  Next  </button>
+    <div class="wounds_strain_bruise">
+    <div class="2colrow">
+        <div>
+            <div class="WoundsCol">
+                <div class="image-progression">
+                    <img src="" name="attr_progress_image" class="sheet-image-class">
+                    <img src="" name="attr_strain_image" class="sheet-image-class">
+                </div>
+                <div class="image-progression">
+                    <button type="action" name="act_progress_backward">Previous</button>
+                    <button type="action" name="act_progress_forward">  Next  </button> 
 
-                <button type="action" name="act_progress_backward">Previous</button>
-                <button type="action" name="act_progress_forward">  Next  </button>
+                    <button type="action" name="act_strain_backward">Previous</button>
+                    <button type="action" name="act_strain_forward">  Next  </button>
+                </div>
             </div>
         </div>
     </div>
+    <div>
+        <div class="image-progression">
+        <h2>Bruises</h2>
+        </div>
+        <div class="image-progression">
+            <div class="checkbox-inline">
+                <label><input type="checkbox" name="attr_check1" ></label>
+                <label><input type="checkbox" name="attr_check2" ></label>
+                <label><input type="checkbox" name="attr_check3" ></label>
+                <label><input type="checkbox" name="attr_check4" ></label>
+                <label><input type="checkbox" name="attr_check5" ></label>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <div>
+        <h3>Injuries:</h3>
+    </div>
+    <div class="injury_box">
+        <select name="attr_dropdown1" id="dropdown1">
+            <option value="None">  </option>
+            <option value="Head">Head</option>
+            <option value="Chest">Chest</option>
+            <option value="LeftArm">Left Arm</option>
+            <option value="RightArm">Right Arm</option>
+            <option value="LeftLeg">Left Leg</option>
+            <option value="RightLeg">Right Leg</option>
+        </select>
+        <select name="attr_dropdown2" id="dropdown2">
+            <option value="None">  </option>
+            <option value="Head">Head</option>
+            <option value="Chest">Chest</option>
+            <option value="LeftArm">Left Arm</option>
+            <option value="RightArm">Right Arm</option>
+            <option value="LeftLeg">Left Leg</option>
+            <option value="RightLeg">Right Leg</option>
+        </select>
+        <select name="attr_dropdown3" id="dropdown3">
+            <option value="None">  </option>
+            <option value="Head">Head</option>
+            <option value="Chest">Chest</option>
+            <option value="LeftArm">Left Arm</option>
+            <option value="RightArm">Right Arm</option>
+            <option value="LeftLeg">Left Leg</option>
+            <option value="RightLeg">Right Leg</option>
+        </select>
+        <select name="attr_dropdown4" id="dropdown4">
+            <option value="None">  </option>
+            <option value="Head">Head</option>
+            <option value="Chest">Chest</option>
+            <option value="LeftArm">Left Arm</option>
+            <option value="RightArm">Right Arm</option>
+            <option value="LeftLeg">Left Leg</option>
+            <option value="RightLeg">Right Leg</option>
+        </select>
+        <select name="attr_dropdown5" id="dropdown5">
+            <option value="None">  </option>
+            <option value="Head">Head</option>
+            <option value="Chest">Chest</option>
+            <option value="LeftArm">Left Arm</option>
+            <option value="RightArm">Right Arm</option>
+            <option value="LeftLeg">Left Leg</option>
+            <option value="RightLeg">Right Leg</option>
+        </select>
+        <input value= 0 type="number" name="attr_fate" readonly>
+    </div> 
+    
+    <div>
+        <h3>Inventory:</h3>
+    </div>
+    <div class="repeating_inventory">
+        <fieldset class="repeating_inventory">
+          <legend>Inventory</legend>
+      
+          <div class="inventory-item">
+            <label for="item_name" class="InventorySection">Item Name</label>
+            <input type="text" name="attr_item_name">
+      
+            <label for="item_quantity">Quantity</label>
+            <input type="number" name="attr_item_quantity" value="1">
+      
+            <label for="item_weight">Weight</label>
+            <input type="number" name="attr_item_weight" step="0.1" value="0">
+          </div>
+      
+          
+        </fieldset>
+      </div>
+
+    </div>
 </div>
+</div>
+
+
+<div class="sheet-journal">
+<div class="Powers_and_Skills" id="PowersAndSkills" class="Powers_and_Skills">
+  <!-- Fieldset for Powers -->
+  <div class="power_container">
+
+    <label>Powers</label>
+    <fieldset class="repeating_powers">
+      <div class="repeating_inventory">
+      <legend>Powers</legend>
+
+      <!-- Power Name -->
+      <label for="power_name">Power Name:</label>
+      <input type="text" name="attr_power_name" class="power-name">
+
+      <!-- Dropdown for Range -->
+      <label for="power_range">Range:</label>
+      <select name="attr_power_range" class="power-range">
+        <option value="short">Short</option>
+        <option value="medium">Medium</option>
+        <option value="long">Long</option>
+      </select>
+
+      <!-- Dropdown for Action -->
+      <label for="power_action">Action:</label>
+      <select name="attr_power_action" class="power-action">
+        <option value="free">Free</option>
+        <option value="standard">Standard</option>
+        <option value="full">Full</option>
+      </select>
+
+      <!-- Dropdown for Trigger -->
+      <label for="power_trigger">Trigger:</label>
+      <select name="attr_power_trigger" class="power-trigger">
+        <option value="manual">Manual</option>
+        <option value="automatic">Automatic</option>
+      </select>
+
+      <!-- Dropdown for Target -->
+      <label for="power_target">Target:</label>
+      <select name="attr_power_target" class="power-target">
+        <option value="single">Single</option>
+        <option value="multiple">Multiple</option>
+        <option value="area">Area</option>
+      </select>
+
+      <!-- Nested Repeating Section for Drawbacks -->
+      <fieldset class="repeating_drawbacks">
+        <legend>Drawbacks</legend>
+
+        <label for="drawback_name">Drawback Name:</label>
+        <input type="text" name="attr_drawback_name" class="drawback-name">
+
+        <label for="drawback_cost">Drawback Cost:</label>
+        <input type="number" name="attr_drawback_cost" class="drawback-cost" value="0" />
+      </fieldset>
+
+      <!-- Total Cost of Power -->
+      <label for="power_cost">Total Cost:</label>
+      <input type="number" name="attr_power_cost" class="power-cost" value="0" readonly />
+
+      </div>
+    </fieldset>
+
+  </div>
+
+  <div class="skill_container">
+    <label>Skills</label>
+    <fieldset class="repeating_skills">
+      <legend>Skill</legend>
+  
+      <!-- Skill Name Dropdown -->
+      
+      <select name="attr_skill_name" class="skillName">
+        <option value="Blank">----</option>
+        <option value="Cursed Energy">Cursed Energy</option>
+        <option value="Physical Combat">Physical Combat</option>
+        <option value="Magical Knowledge">Magical Knowledge</option>
+        <!-- Add more options as needed -->
+      </select>
+    </fieldset>
+  </div>
+</div>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <input type="hidden" name="attr_progress_state" value="0">
-<input type="hidden" name="attr_strain_progress" value="image-state-0">
+<input type="hidden" name="attr_strain_progress" value="0">
 
 
 <script type="text/worker"> 
@@ -101,15 +357,120 @@
         'https://raw.githubusercontent.com/RehHairing/AS_CS/main/Images/Wounds/Wound5.jpg'
     ];
     const strainImageUrls = [
-        'https://raw.githubusercontent.com/RehHairing/AS_CS/main/Images/Wounds/Wound0.jpg',
-        'https://raw.githubusercontent.com/RehHairing/AS_CS/main/Images/Wounds/Wound1.jpg',
-        'https://raw.githubusercontent.com/RehHairing/AS_CS/main/Images/Wounds/Wound1.jpg',
-        'https://raw.githubusercontent.com/RehHairing/AS_CS/main/Images/Wounds/Wound2.jpg',
-        'https://raw.githubusercontent.com/RehHairing/AS_CS/main/Images/Wounds/Wound3.jpg',
-        'https://raw.githubusercontent.com/RehHairing/AS_CS/main/Images/Wounds/Wound4.jpg',
-        'https://raw.githubusercontent.com/RehHairing/AS_CS/main/Images/Wounds/Wound5.jpg'
+        'https://raw.githubusercontent.com/RehHairing/AS_CS/main/Images/Strain/Wound0.jpg',
+        'https://raw.githubusercontent.com/RehHairing/AS_CS/main/Images/Strain/Wound1.jpg',
+        'https://raw.githubusercontent.com/RehHairing/AS_CS/main/Images/Strain/Wound1.jpg',
+        'https://raw.githubusercontent.com/RehHairing/AS_CS/main/Images/Strain/Wound2.jpg',
+        'https://raw.githubusercontent.com/RehHairing/AS_CS/main/Images/Strain/Wound3.jpg',
+        'https://raw.githubusercontent.com/RehHairing/AS_CS/main/Images/Strain/Wound4.jpg',
+        'https://raw.githubusercontent.com/RehHairing/AS_CS/main/Images/Strain/Wound5.jpg'
     ];
 
+
+    
+
+    on('change:check1 change:check2 change:check3 change:check4 change:check5', function() {
+        const checkAttributes = ['check1', 'check2', 'check3', 'check4', 'check5'];
+      
+        getAttrs(checkAttributes, function(values) {
+          let bruiseLevel = 0;
+      
+          // Iterate through each check value
+          checkAttributes.forEach(attr => {
+            if (parseInt(values[attr]) !== 0) {
+              bruiseLevel += 1;
+            }
+          });
+          
+          // Determine actions based on bruiseLevel
+          switch (bruiseLevel) {
+            case 1: 
+              downgradeDice('BD', 1);
+              break;
+            case 2: 
+              downgradeDice('BD', 2);
+              break;
+            case 3: 
+              downgradeDice('BD', 3);
+              break;
+            case 4: 
+              downgradeDice('BD', 4);
+              break;
+            case 5: 
+              downgradeDice('BD', 5);
+              break;
+            default: downgradeDice('BD', 0);
+              // Optional: You can add some handling for bruiseLevel = 0 if needed
+          }
+        });
+      });
+
+    const diceCategories = ['d4', 'd6', 'd10', 'd12', 'd20'];
+
+// Function to downgrade dice
+function downgradeDice(statName, downgradeTimes) {
+    const diceAttributes = {
+      d4: `d_4_${statName}`,
+      d6: `d_6_${statName}`,
+      d10: `d_10_${statName}`,
+      d12: `d_12_${statName}`,
+      d20: `d_20_${statName}`
+    };
+  
+    getAttrs(Object.values(diceAttributes), function(values) {
+        let diceCounts = {};
+        diceCategories.forEach(die => {
+          diceCounts[die] = parseInt(values[diceAttributes[die]]) || 0;
+        });
+    
+        // Downgrade the dice the specified number of times
+        for (let i = 0; i < downgradeTimes; i++) {
+          for (let j = 0; j < diceCategories.length; j++) {
+            let currentDie = diceCategories[j];
+            if (diceCounts[currentDie] > 0) {
+              diceCounts[currentDie] -= 1;
+              if (j > 0) {
+                let lowerDie = diceCategories[j - 1];
+                diceCounts[lowerDie] += 1;
+              }
+              break; // Exit loop after downgrading one die
+            }
+          }
+        }
+    
+        // Construct the roll expression
+        let rollExpression = '';
+        diceCategories.forEach(die => {
+          if (diceCounts[die] > 0) {
+            for (let k = 0; k < diceCounts[die]; k++) {
+              rollExpression += `1${die} + `;
+            }
+          }
+        });
+        
+        // Remove trailing '+ ' and set the roll expression
+        if (rollExpression.endsWith(' + ')) {
+          rollExpression = rollExpression.slice(0, -3);
+        }
+    
+        // Update the character sheet with the new roll expression
+        setAttrs({
+          downgraded_roll_expression: rollExpression
+        });
+      });
+ }
+
+
+ function updateBruise(){
+     setAttrs({
+         check1 : 0,
+         check2 : 0,
+         check3 : 0,
+         check4 : 0,
+         check5 : 0
+     });
+ }
+ 
  // Function to update the image based on the current state
  function updateImage(state) {
     const imgClass = imageUrls[state];
@@ -129,7 +490,9 @@ on('clicked:progress_forward', function() {
             updateImage(state);
         }
     });
+    updateBruise()
 });
+
 
 // Event listener for backward button
 on('clicked:progress_backward', function() {
@@ -143,6 +506,7 @@ on('clicked:progress_backward', function() {
             updateImage(state);
         }
     });
+    updateBruise()
 });
 
 // Initialize the image on sheet open
@@ -152,4 +516,267 @@ on('sheet:opened change:progress_state', function() {
         updateImage(state);
     });
 });
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+function updateStrain(state) {
+    const imgClass = strainImageUrls[state];
+        setAttrs({
+            strain_image: imgClass
+        });
+    }
+
+
+// Event listener for forward button
+on('clicked:strain_forward', function() {
+    getAttrs(['strain_progress'], function(values) {
+        let state = parseInt(values.strain_progress, 10);
+        if (state < imageUrls.length - 1) {
+            state++;
+            setAttrs({
+                strain_progress: state
+            });
+            updateStrain(state);
+        }
+    });
+});
+
+// Event listener for backward button
+on('clicked:strain_backward', function() {
+    getAttrs(['strain_progress'], function(values) {
+        let state = parseInt(values.strain_progress, 10);
+        if (state > 0) {
+            state--;
+            setAttrs({
+                strain_progress: state
+            });
+            updateStrain(state);
+        }
+    });
+});
+
+// Initialize the image on sheet open
+on('sheet:opened change:strain_progress', function() {
+    getAttrs(['strain_progress'], function(values) {
+        let state = parseInt(values.strain_progress, 10);
+        updateStrain(state);
+    });
+});
+
+function updateFate(){
+    getAttrs(['dropdown1','dropdown2','dropdown3','dropdown4','dropdown5'], function(values){
+        const dropdownValues = [values.dropdown1, values.dropdown2, values.dropdown3, values.dropdown4, values.dropdown5];
+        let total = 0; 
+
+        const valueMapping = {
+            'None': 0,
+            'Head': 15,
+            'Chest': 10,
+            'LeftArm': 5,
+            'RightArm': 5,
+            'LeftLeg': 5,
+            'RightLeg': 5
+          }; 
+
+          dropdownValues.forEach(value => {
+            if (value in valueMapping){
+                total += valueMapping[value];
+            }
+          });
+
+          setAttrs({
+            fate : total
+          });
+    });
+}
+
+on('change:dropdown1 change:dropdown2 change:dropdown3 change:dropdown4 change:dropdown5', function() {
+        updateFate(); 
+});
+
+/* <option value="None">  </option>
+    <option value="Head">Head</option>
+    <option value="Chest">Chest</option>
+    <option value="LeftArm">Left Arm</option>
+    <option value="RightArm">Right Arm</option>
+    <option value="LeftLeg">Left Leg</option>
+    <option value="RightLeg">Right Leg</option> */
+
+
+    function calculateTotalWeight() {
+        getSectionIDs("repeating_inventory", function(idarray) {
+          const attributes = [];
+          idarray.forEach(id => {
+            attributes.push(`repeating_inventory_${id}_item_quantity`);
+            attributes.push(`repeating_inventory_${id}_item_weight`);
+          });
+      
+          getAttrs(attributes, function(values) {
+            let totalWeight = 0;
+      
+            idarray.forEach(id => {
+              const quantity = parseInt(values[`repeating_inventory_${id}_item_quantity`]) || 0;
+              const weight = parseFloat(values[`repeating_inventory_${id}_item_weight`]) || 0;
+              totalWeight += quantity * weight;
+            });
+      
+            setAttrs({
+              total_weight: totalWeight
+            });
+          });
+        });
+      }
+      
+      // Event listener for changes in repeating section
+      on("change:repeating_inventory:item_quantity change:repeating_inventory:item_weight", function() {
+        calculateTotalWeight();
+      });
+      
+      // Initial calculation when sheet is opened
+      on("sheet:opened", function() {
+        calculateTotalWeight();
+        setAttrs({
+          sheetTab: "character"
+      });
+      });
+
+
+// Handle tab selection
+
+
+// List of all possible tab buttons
+const buttonlist = ["character", "journal", "configuration"];
+
+// Set up event listeners for each button click
+buttonlist.forEach(button => {
+    on(`clicked:${button}`, function() {
+        setAttrs({
+            sheetTab: button
+        });
+    });
+});
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+on("change:d_4_CE change:d_6_CE change:d_10_CE change:d_12_CE change:d_20_CE", function() {
+  getAttrs(["d_4_CE", "d_6_CE", "d_10_CE", "d_12_CE", "d_20_CE"], function(values) {
+    let d4 = parseInt(values.d_4_CE) || 0;
+    let d6 = parseInt(values.d_6_CE) || 0;
+    let d10 = parseInt(values.d_10_CE) || 0;
+    let d12 = parseInt(values.d_12_CE) || 0;
+    let d20 = parseInt(values.d_20_CE) || 0;
+
+    let totalCE = (d4 * 4) + (d6 * 6) + (d10 * 10) + (d12 * 12) + (d20 * 20);
+
+    setAttrs({
+        total_CE: totalCE
+        
+    });
+    setAttrs({
+      current_CE: totalCE
+      
+  });
+});
+});
+
+
+//////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+// Function to calculate the cost of a power
+// Function to calculate the cost of a power
+function calculatePowerCost() {
+  getSectionIDs("repeating_powers", function(idarray) {
+    idarray.forEach(id => {
+      const prefix = `repeating_powers_${id}_`;
+      
+      // Get all relevant attributes for this power
+      getAttrs([`${prefix}power_range`, `${prefix}power_action`, `${prefix}power_trigger`, `${prefix}power_target`], function(values) {
+        let powerCost = 25;
+
+        // Calculate base cost from dropdowns
+        switch (values[`${prefix}power_range`]) {
+          case 'short':
+            powerCost += 1;
+            break;
+          case 'medium':
+            powerCost += 2;
+            break;
+          case 'long':
+            powerCost += 3;
+            break;
+        }
+
+        switch (values[`${prefix}power_action`]) {
+          case 'free':
+            powerCost += 0;
+            break;
+          case 'standard':
+            powerCost += 1;
+            break;
+          case 'full':
+            powerCost += 2;
+            break;
+        }
+
+        switch (values[`${prefix}power_trigger`]) {
+          case 'manual':
+            powerCost += 0;
+            break;
+          case 'automatic':
+            powerCost += 1;
+            break;
+        }
+
+        switch (values[`${prefix}power_target`]) {
+          case 'single':
+            powerCost += 1;
+            break;
+          case 'multiple':
+            powerCost += 2;
+            break;
+          case 'area':
+            powerCost += 3;
+            break;
+        }
+
+        // Add drawback costs from nested repeating section
+        getSectionIDs(`${prefix}drawbacks`, function(drawbackIds) {
+          let totalDrawbackCost = 0; // Accumulate cost across all drawbacks
+          if (drawbackIds.length === 0) {
+            setAttrs({ [`${prefix}power_cost`]: powerCost }); // Set cost if no drawbacks
+          } else {
+            drawbackIds.forEach((drawbackId, index) => {
+              getAttrs([`${prefix}drawbacks_${drawbackId}_drawback_cost`], function(drawbackValues) {
+                const drawbackCost = parseInt(drawbackValues[`${prefix}drawbacks_${drawbackId}_drawback_cost`]) || 0;
+                totalDrawbackCost += drawbackCost;
+                // Update total power cost after processing all drawbacks
+                if (index === drawbackIds.length - 1) {
+                  setAttrs({
+                    [`${prefix}power_cost`]: powerCost + totalDrawbackCost
+                  });
+                }
+              });
+            });
+          }
+        });
+      });
+    });
+  });
+}
+
+// Listen for changes in the repeating powers or drawbacks sections
+on('change:repeating_powers:power_range change:repeating_powers:power_action change:repeating_powers:power_trigger change:repeating_powers:power_target change:repeating_powers:drawbacks:drawback_cost', function() {
+  calculatePowerCost();
+});
+
+// Run calculation on sheet opening
+on('sheet:opened', function() {
+  calculatePowerCost();
+});
+
+
 </script>

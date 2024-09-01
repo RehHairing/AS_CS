@@ -14,3 +14,116 @@
 .image-progression button {
     padding: 5px 10px;
 }
+.checkbox-inline {
+    display: inline-flex; /* Adjust spacing between checkboxes */
+    justify-content: center;
+    align-items: center;
+}
+  
+.checkbox-inline label {
+  display: flex;
+  align-items: center;
+  margin-right: 5px; /* Space between checkboxes, adjust as needed */
+}
+.statContainer{
+    border: 5px;
+    background-color: darkgrey;
+}
+.containerWhole{
+    display: inline-flex;
+}
+.statusBox select{
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    margin: 0 10px;
+}
+.dicePool {
+    border: 1px solid black;
+    margin: 5px;
+    background-color: lightgrey;
+}
+.repeating_inventory {
+    border: 1px solid #000000;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .inventory-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background-color: lightgray;
+  }
+  
+  .inventory-item label {
+    margin-right: 5px;
+    height: 10px;
+  }
+  
+  .inventory-item input {
+    margin-right: 10px;
+    height: 10px;
+  }
+  
+  button[type="action"] {
+    margin-top: 10px;
+    height: 10px;
+  }
+  .injury_box {
+    border: 1px solid black;
+  }
+  .wounds_strain_bruise{
+    border: 1px solid black;
+  }
+
+  /* Hide all tab content by default */
+  .sheet-character,
+  .sheet-config,
+  .sheet-journal {
+    display: none;
+  }
+
+  .sheet-tabstoggle[value="character"] ~ .sheet-character,
+  .sheet-tabstoggle[value="configuration"] ~ .sheet-config,
+  .sheet-tabstoggle[value="journal"] ~ .sheet-journal {
+	display: flex;
+  }
+  .tab-button{
+    padding: 5px;
+  }
+  .totalCE{
+    max-width: 50px;
+  }
+  .repeating-powers {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 5px;
+    background-color: darkgrey;
+  }
+  
+  .repeating-drawbacks {
+    border: 1px dashed #ccc;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .power_container{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    background-color: darkgrey;
+    display:grid;
+    
+  }
+  .Powers_and_Skills{
+    display: inline-flex;
+    
+  }
+  .skill_container{
+    padding-left: 20px;
+    border: 1px solid black;
+    border-color: #000000;
+    display: inline;
+  }
